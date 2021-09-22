@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
+    "react-refresh": "^0.10.0",
+    "webpack-dev-server": "^4.2.1"
+  }
 }
