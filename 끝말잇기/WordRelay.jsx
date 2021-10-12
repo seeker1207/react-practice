@@ -1,51 +1,42 @@
 const React = require('react');
-const { Component } = React;
+const { useState, useRef } = React;
 
-class WordRelay extends Component {
-    state = {
-        word: '지훈야',
-        value: '',
-        result: '',
-    };
+const WordRelay = () => {
+    const [word, setWord] = useState('지훈쓰');
+    const [value, setValue] = useState('');
+    const [result, setResult] = useState('');
+    const inputRef = useRef(null);
 
-    onSubmitForm = (e) => {
+    const onSubmitForm = (e) => {
         e.preventDefault();
-        if (this.state.word[this.state.word.length - 1] === this.state.value[0]) {
-            this.setState({
-                result: '딩동댕',
-                word: this.state.value,
-                value: '',
-            })
+        if (word[word.length - 1] === value[0]) {
+            setResult('딩동댕ff');
+            setWord(value);
+            setValue('');
+            inputRef.current.focus();
         } else {
-            this.setState({
-                result: '땡',
-                value: '',
-            })
+            setResult('떙');
+            setValue('');
+            inputRef.current.focus();
         }
-        this.input.focus();
     }
 
-    onChangeInput = (e) => {
-        this.setState({ value: e.target.value })
+    const onChangeInput = (e) => {
+        setValue(e.target.value)
     }
 
-    input;
+    return (
+        <>
+            <div>{word}</div>
+            <form onSubmit={onSubmitForm}>
+                <label htmlFor="wordInput">글자를 입력하세요</label>
+                <input id="wordInput" ref={inputRef} value={value} onChange={onChangeInput}/>
+                <button>입력!1</button>
+            </form>
+            <div>{result}</div>
+        </>
+    )
 
-    onRefInput = (c) => {
-        this.input = c;
-    }
-    render() {
-        return (
-            <>
-                <div>{this.state.word}</div>
-                <form onSubmit={this.onSubmitForm}>
-                    <input ref={this.onRefInput} value={this.state.value} onChange={this.onChangeInput}/>
-                    <button>입력!44332</button>
-                </form>
-                <div>{this.state.result}</div>
-            </>
-        )
-    }
 }
 
 module.exports = WordRelay;
