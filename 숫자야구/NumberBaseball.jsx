@@ -1,4 +1,4 @@
-import React, { useState, memo, useRef } from "react";
+import React, { useState } from "react";
 import Try from './Try';
 
 function getNumbers() { //숫자 4개 랜덤하게 뽑는 함수.
@@ -11,12 +11,11 @@ function getNumbers() { //숫자 4개 랜덤하게 뽑는 함수.
     return array;
 }
 
-const NumberBaseball = memo(() => {
+const NumberBaseball = () => {
     const [result, setResult] = useState('');
     const [value, setValue] = useState('');
     const [number, setNumber] = useState(getNumbers());
     const [tries, setTries] = useState([]);
-    const inputEl = useRef(null);
 
     const onSubmitForm = (e) => {
         e.preventDefault();
@@ -43,7 +42,7 @@ const NumberBaseball = memo(() => {
                 setValue('');
                 setNumber(getNumbers());
                 setTries([]);
-                inputEl.current.focus();
+
             } else {
                 for (let i = 0; i < 4; i += 1){
                     if (answerArray[i] === number[i]) {
@@ -66,7 +65,7 @@ const NumberBaseball = memo(() => {
         <>
             <h1>{result}</h1>
             <form onSubmit={onSubmitForm}>
-                <input ref={inputEl} maxLength={4} value={value} onChange={onChangeInput}/>
+                <input maxLength={4} value={value} onChange={onChangeInput}/>
             </form>
             <div>시도: {tries.length}</div>
             <ul>
@@ -78,7 +77,7 @@ const NumberBaseball = memo(() => {
             </ul>
         </>
     )
-});
+}
 // class NumberBaseball extends Component{
 //     state = {
 //         result: '',
