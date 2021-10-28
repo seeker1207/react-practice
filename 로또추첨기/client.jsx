@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDom = require('react-dom');
 
-import RSP from './RSPhooks';
+import Lotto from './LottoHooks';
 
-ReactDom.render(<RSP />, document.querySelector('#root')  );
+ReactDom.render(<Lotto />, document.querySelector('#root')  );
