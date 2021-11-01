@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDom = require('react-dom');
 
-import ResponseCheck from './ResponseCheck';
+import TikTakTok from './TikTakTok';
 
-ReactDom.render(<ResponseCheck />, document.querySelector('#root')  );
+ReactDom.render(<TikTakTok />, document.querySelector('#root')  );
