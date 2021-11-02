@@ -1,7 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, memo } from 'react';
 import { CLICK_CELL, SET_TURN } from "./TikTakTok";
 
-const Td = ({ rowIndex, cellIndex, cellData, dispatch }) => {
+const Td = memo(({ rowIndex, cellIndex, cellData, dispatch }) => {
+    const ref = useRef([]);
+
     const onClickTd = useCallback(() => {
         console.log(rowIndex, cellIndex);
         if (cellData) {
@@ -16,6 +18,6 @@ const Td = ({ rowIndex, cellIndex, cellData, dispatch }) => {
             {cellData}
         </td>
     );
-};
+});
 
 export default Td;

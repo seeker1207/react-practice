@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useCallback, useEffect} from 'react';
+import React, {useState, useReducer, useCallback, useEffect, useRef} from 'react';
 import Table from "./Table";
 
 const initialState = {
@@ -60,7 +60,12 @@ const TikTakTok = () => {
     // const [winner, setWinner] = useState('');
     // const [turn, setTurn] = useState('O');
     // const [tableData, setTableData] = useState([['', '', ''], ['', '', ''], ['', '', '']]);
-
+    const ref = useRef([]);
+    useEffect(() => {
+        console.log( tableData === ref.current[0], turn === ref.current[1], winner === ref.current[2], recentCell === ref.current[3]);
+        ref.current = [tableData, turn, winner, recentCell];
+    }, [tableData, turn, winner, recentCell])
+    console.log('tiktaktok!!');
     const onClickTable = useCallback(() => {
         console.log('onclick Table!!');
         dispatch({ type: SET_WINNER, winner: 'O' });
